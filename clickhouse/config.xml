@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<clickhouse>
+    <logger>
+        <level>information</level>
+        <console>true</console>
+    </logger>
+
+    <http_port>8123</http_port>
+    <tcp_port>9000</tcp_port>
+    <interserver_http_port>9009</interserver_http_port>
+
+    <listen_host>0.0.0.0</listen_host>
+
+    <max_server_memory_usage_to_ram_ratio>0.8</max_server_memory_usage_to_ram_ratio>
+    <max_concurrent_queries>100</max_concurrent_queries>
+
+    <path>/var/lib/clickhouse/</path>
+    <tmp_path>/var/lib/clickhouse/tmp/</tmp_path>
+    <user_files_path>/var/lib/clickhouse/user_files/</user_files_path>
+    <format_schema_path>/var/lib/clickhouse/format_schemas/</format_schema_path>
+
+    <remote_servers>
+        <data_warehouse>
+            <shard>
+                <replica>
+                    <host>clickhouse</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </data_warehouse>
+    </remote_servers>
+
+    <macros>
+        <cluster>data_warehouse</cluster>
+        <shard>01</shard>
+        <replica>replica_01</replica>
+    </macros>
+</clickhouse>
